@@ -5,11 +5,16 @@ import com.volvo.assessment.piotrkuchnowski.service.CityWeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 @RestController
-@RequestMapping("/apis/weather/city")
+@RequestMapping("/apis/weather")
 public class CityWeatherController {
     private final CityWeatherService cityWeatherService;
 
@@ -18,28 +23,15 @@ public class CityWeatherController {
         this.cityWeatherService = cityWeatherService;
     }
 
-    @GetMapping("/wroclaw")
-    public ResponseEntity<CityForecast> getWroclawWeather() {
-        return null;
-    }
 
-    @GetMapping("/warsaw")
-    public ResponseEntity<CityForecast> getWarsawWeather() {
-        return null;
-    }
 
-    @GetMapping("/krakow")
-    public ResponseEntity<CityForecast> getKrakowWeather() {
-        return null;
-    }
-
-    @GetMapping("/lodz")
-    public ResponseEntity<CityForecast> getLodzWeather() {
-        return null;
-    }
-
-    @GetMapping("/poznan")
-    public ResponseEntity<CityForecast> getPoznanWeather() {
-        return null;
+    @GetMapping("/city/{cityName}")
+    public ResponseEntity<CityForecast> getCityWeather(@PathVariable String cityName) throws IOException, InterruptedException {
+        System.out.println("cityName="+cityName);
+        CityForecast cityForecast = cityWeatherService.getCityWeather(cityName);
+        if(cityForecast != null) {
+            return ResponseEntity.ok(cityForecast);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
