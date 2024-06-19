@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class CityWeatherService {
-    private ApiClient apiClient;
+    private final ApiClient apiClient;
 
     @Autowired
     public CityWeatherService(ApiClient apiClient) {
