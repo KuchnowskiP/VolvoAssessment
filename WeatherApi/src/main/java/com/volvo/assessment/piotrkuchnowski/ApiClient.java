@@ -1,6 +1,8 @@
 package com.volvo.assessment.piotrkuchnowski;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.volvo.assessment.piotrkuchnowski.exception.LocationNotFoundException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -24,6 +26,12 @@ public class ApiClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        JsonNode responseJson = objectMapper.readTree(response.body());
+        if(responseJson.has("error")){
+            if(responseJson.get("error").get("code").asInt() == 1006){
+                throw new LocationNotFoundException("Location not found");
+            }
+        }
         return objectMapper.readValue(response.body(), ForecastResponse.class);
     }
 

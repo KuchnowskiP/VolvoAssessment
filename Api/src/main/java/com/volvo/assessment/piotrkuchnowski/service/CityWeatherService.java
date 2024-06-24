@@ -35,7 +35,7 @@ public class CityWeatherService {
 
     private static CityForecastDay getCityForecastDay(ForecastDay forecastDay) {
         BigDecimal totalSnowMm = new BigDecimal(String.valueOf(forecastDay.day().totalsnow_cm())).multiply(new BigDecimal(10));
-        CityForecastDay cityForecastDay = new CityForecastDay(
+        return new CityForecastDay(
                 forecastDay.date(),
                 forecastDay.day().maxtemp_c(),
                 forecastDay.day().mintemp_c(),
@@ -46,7 +46,6 @@ public class CityWeatherService {
                 forecastDay.day().avghumidity(),
                 forecastDay.day().uv()
         );
-        return cityForecastDay;
     }
 
     public CityForecast getCityWeather(String cityName) throws IOException, InterruptedException {
