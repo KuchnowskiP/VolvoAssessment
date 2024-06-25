@@ -76,6 +76,58 @@ This will return a JSON response with the weather forecast for the specified cit
 
 Please replace `{cityName}` with the actual city name in the curl command.
 
+### Example Successful API Response
+```json
+{
+  "name": "Warsaw",
+  "forecastday": [
+    {
+      "date": "2024-06-25",
+      "maxtemp_c": 26.7,
+      "mintemp_c": 15.4,
+      "avgtemp_c": 21.4,
+      "maxwind_kph": 15.1,
+      "totalprecip_mm": 0,
+      "totalsnow_cm": 0,
+      "avghumidity": 61,
+      "uv": 7
+    },
+    {
+      "date": "2024-06-26",
+      "maxtemp_c": 29.1,
+      "mintemp_c": 17.6,
+      "avgtemp_c": 23.8,
+      "maxwind_kph": 17.6,
+      "totalprecip_mm": 0,
+      "totalsnow_cm": 0,
+      "avghumidity": 52,
+      "uv": 7
+    },
+    {
+      "date": "2024-06-27",
+      "maxtemp_c": 30.1,
+      "mintemp_c": 19.2,
+      "avgtemp_c": 24.7,
+      "maxwind_kph": 21.2,
+      "totalprecip_mm": 0,
+      "totalsnow_cm": 0,
+      "avghumidity": 51,
+      "uv": 7
+    }
+  ]
+}
+```
+### Example Error API Response
+```json
+{
+  "timestamp": "2024-06-26T00:00:01.886645500",
+  "statusCode": 404,
+  "error": "Not Found",
+  "message": "Location not found",
+  "path": "/api/v1/weather/city/"
+}
+```
+
 ## Presentation
 The weather forecast data for the five largest cities in Poland is stored in the following files:
 - city_forecasts/warsaw.json
@@ -113,3 +165,8 @@ The tests cover the following scenarios:
 - When the city name is provided but does not exist, the controller should return a NOT_FOUND (HTTP 404) status code.
 - When the API key is not provided, the controller should return an UNAUTHORIZED (HTTP 401) status code.
 - When the city name is provided and exists, the controller should return an OK (HTTP 200) status code.
+
+To run the tests, use the following command:
+```bash
+    ./gradlew test
+```
