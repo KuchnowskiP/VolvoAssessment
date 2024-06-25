@@ -1,0 +1,38 @@
+{
+    "name": "Poznan",
+    "forecastday": [
+        {
+            "date": "2024-06-26",
+            "maxtemp_c": 28.3,
+            "mintemp_c": 15.4,
+            "avgtemp_c": 22.2,
+            "maxwind_kph": 22.7,
+            "totalprecip_mm": 0.0,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 66,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-27",
+            "maxtemp_c": 30.2,
+            "mintemp_c": 17.5,
+            "avgtemp_c": 23.8,
+            "maxwind_kph": 17.3,
+            "totalprecip_mm": 0.37,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 68,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-28",
+            "maxtemp_c": 29.7,
+            "mintemp_c": 18.2,
+            "avgtemp_c": 23.6,
+            "maxwind_kph": 20.5,
+            "totalprecip_mm": 4.05,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 74,
+            "uv": 7
+        }
+    ]
+}

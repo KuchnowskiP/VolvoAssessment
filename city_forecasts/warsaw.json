@@ -1,0 +1,38 @@
+{
+    "name": "Warsaw",
+    "forecastday": [
+        {
+            "date": "2024-06-26",
+            "maxtemp_c": 29.1,
+            "mintemp_c": 17.6,
+            "avgtemp_c": 23.8,
+            "maxwind_kph": 17.6,
+            "totalprecip_mm": 0.0,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 52,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-27",
+            "maxtemp_c": 30.1,
+            "mintemp_c": 19.2,
+            "avgtemp_c": 24.7,
+            "maxwind_kph": 21.2,
+            "totalprecip_mm": 0.0,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 51,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-28",
+            "maxtemp_c": 32.8,
+            "mintemp_c": 20.0,
+            "avgtemp_c": 25.4,
+            "maxwind_kph": 18.4,
+            "totalprecip_mm": 7.52,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 60,
+            "uv": 7
+        }
+    ]
+}

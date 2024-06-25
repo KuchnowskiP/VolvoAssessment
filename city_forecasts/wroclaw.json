@@ -1,0 +1,38 @@
+{
+    "name": "Wroclaw",
+    "forecastday": [
+        {
+            "date": "2024-06-26",
+            "maxtemp_c": 30.4,
+            "mintemp_c": 14.5,
+            "avgtemp_c": 23.0,
+            "maxwind_kph": 17.6,
+            "totalprecip_mm": 0.0,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 61,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-27",
+            "maxtemp_c": 32.5,
+            "mintemp_c": 17.7,
+            "avgtemp_c": 24.3,
+            "maxwind_kph": 20.2,
+            "totalprecip_mm": 3.86,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 64,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-28",
+            "maxtemp_c": 31.1,
+            "mintemp_c": 18.0,
+            "avgtemp_c": 24.7,
+            "maxwind_kph": 22.0,
+            "totalprecip_mm": 0.07,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 66,
+            "uv": 7
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "name": "Lodz",
+    "forecastday": [
+        {
+            "date": "2024-06-26",
+            "maxtemp_c": 28.3,
+            "mintemp_c": 15.8,
+            "avgtemp_c": 22.4,
+            "maxwind_kph": 22.7,
+            "totalprecip_mm": 0.0,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 65,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-27",
+            "maxtemp_c": 30.3,
+            "mintemp_c": 17.9,
+            "avgtemp_c": 24.0,
+            "maxwind_kph": 16.6,
+            "totalprecip_mm": 0.22,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 67,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-28",
+            "maxtemp_c": 29.5,
+            "mintemp_c": 18.4,
+            "avgtemp_c": 23.6,
+            "maxwind_kph": 20.2,
+            "totalprecip_mm": 4.03,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 74,
+            "uv": 7
+        }
+    ]
+}

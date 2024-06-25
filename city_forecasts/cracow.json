@@ -1,0 +1,38 @@
+{
+    "name": "Cracow",
+    "forecastday": [
+        {
+            "date": "2024-06-26",
+            "maxtemp_c": 27.6,
+            "mintemp_c": 13.6,
+            "avgtemp_c": 20.5,
+            "maxwind_kph": 15.8,
+            "totalprecip_mm": 0.21,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 76,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-27",
+            "maxtemp_c": 28.6,
+            "mintemp_c": 16.6,
+            "avgtemp_c": 21.7,
+            "maxwind_kph": 19.4,
+            "totalprecip_mm": 9.63,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 77,
+            "uv": 7
+        },
+        {
+            "date": "2024-06-28",
+            "maxtemp_c": 29.7,
+            "mintemp_c": 16.9,
+            "avgtemp_c": 23.0,
+            "maxwind_kph": 17.3,
+            "totalprecip_mm": 3.01,
+            "totalsnow_cm": 0.0,
+            "avghumidity": 73,
+            "uv": 7
+        }
+    ]
+}
