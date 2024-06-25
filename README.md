@@ -64,7 +64,7 @@ To get the weather forecast for the next three days for a specific city, you can
 ```bash
     curl -X GET "http://localhost:8080/api/v1/weather/city/{cityName}" -H "accept: application/json"
 ```
-This will return a JSON response with the weather forecast for the specified city and will work on Unix based systems as well as Windows.
+This will return a JSON response with the weather forecast for the specified city and will work on Unix based systems as well as on Windows.
 ## API Endpoints
 
 The application exposes only one API endpoint for all cities:
@@ -75,9 +75,20 @@ The endpoint returns the weather forecast for the next three days for a specific
 
 ## Presentation
 The weather forecast data for the five largest cities in Poland is stored in the following files:
+- city_forecasts/warsaw.json
+- city_forecasts/krakow.json
+- city_forecasts/lodz.json
+- city_forecasts/wroclaw.json
+- city_forecasts/poznan.json
 
-city_forecasts/warsaw.json
-city_forecasts/krakow.json
-city_forecasts/lodz.json
-city_forecasts/wroclaw.json
-city_forecasts/poznan.json
+## Error Handling
+As an example of error handling, the application includes a custom exceptions:
+- LocationNotFoundException
+
+which is thrown when the specified city is not found in the weather forecast data.
+When controller catches this exception, it returns a 404 Not Found response with a custom response body. (ApiErrorResponse record)
+
+- LocationNotProvidedException
+
+which is thrown when the cityName path variable is not provided in the request.
+When controller catches this exception, it returns a 400 Bad Request response with a custom response body. (ApiErrorResponse record)

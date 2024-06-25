@@ -1,6 +1,7 @@
 package com.volvo.assessment.piotrkuchnowski.controller;
 
 import com.volvo.assessment.piotrkuchnowski.exception.LocationNotFoundException;
+import com.volvo.assessment.piotrkuchnowski.exception.LocationNotProvidedException;
 import com.volvo.assessment.piotrkuchnowski.response.ApiErrorResponse;
 import com.volvo.assessment.piotrkuchnowski.response.CityForecast;
 import com.volvo.assessment.piotrkuchnowski.service.CityWeatherService;
@@ -56,7 +57,7 @@ public class CityWeatherController {
         try {
             CityForecast cityForecast = cityWeatherService.getCityWeather(cityName);
             return ResponseEntity.ok(cityForecast);
-        }catch (LocationNotFoundException e){
+        }catch(LocationNotFoundException e){
             return new ResponseEntity<>(
                     new ApiErrorResponse(
                             LocalDateTime.now().toString(),
@@ -65,6 +66,16 @@ public class CityWeatherController {
                             e.getMessage(),
                             "/api/v1/weather/city/"+cityName
                     ), HttpStatus.NOT_FOUND
+            );
+        }catch(LocationNotProvidedException e){
+            return new ResponseEntity<>(
+                    new ApiErrorResponse(
+                            LocalDateTime.now().toString(),
+                            HttpStatus.BAD_REQUEST.value(),
+                            HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                            e.getMessage(),
+                            "/api/v1/weather/city/"+cityName
+                    ), HttpStatus.BAD_REQUEST
             );
         }
     }

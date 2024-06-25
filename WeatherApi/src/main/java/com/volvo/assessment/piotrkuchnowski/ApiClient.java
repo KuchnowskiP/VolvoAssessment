@@ -31,6 +31,9 @@ public class ApiClient {
             if(responseJson.get("error").get("code").asInt() == 1006){
                 throw new LocationNotFoundException("Location not found");
             }
+            if(responseJson.get("error").get("code").asInt() == 1003){
+                throw new LocationNotFoundException("Location not provided");
+            }
         }
         return objectMapper.readValue(response.body(), ForecastResponse.class);
     }
