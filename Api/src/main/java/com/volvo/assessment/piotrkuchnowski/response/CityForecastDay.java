@@ -9,7 +9,7 @@ public record CityForecastDay(
         BigDecimal avgtemp_c,
         BigDecimal maxwind_kph,
         BigDecimal totalprecip_mm,
-        BigDecimal totalsnow_mm,
+        BigDecimal totalsnow_cm,
         BigDecimal avghumidity,
         Integer uv
 ) {

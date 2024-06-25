@@ -34,7 +34,6 @@ public class CityWeatherService {
     }
 
     private static CityForecastDay getCityForecastDay(ForecastDay forecastDay) {
-        BigDecimal totalSnowMm = new BigDecimal(String.valueOf(forecastDay.day().totalsnow_cm())).multiply(new BigDecimal(10));
         return new CityForecastDay(
                 forecastDay.date(),
                 forecastDay.day().maxtemp_c(),
@@ -42,7 +41,7 @@ public class CityWeatherService {
                 forecastDay.day().avgtemp_c(),
                 forecastDay.day().maxwind_kph(),
                 forecastDay.day().totalprecip_mm(),
-                totalSnowMm,
+                forecastDay.day().totalsnow_cm(),
                 forecastDay.day().avghumidity(),
                 forecastDay.day().uv()
         );
