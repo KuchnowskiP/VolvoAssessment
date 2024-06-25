@@ -1,6 +1,5 @@
 package com.volvo.assessment.piotrkuchnowski;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public record ForecastDay (
