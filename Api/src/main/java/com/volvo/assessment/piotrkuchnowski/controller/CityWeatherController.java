@@ -1,5 +1,6 @@
 package com.volvo.assessment.piotrkuchnowski.controller;
 
+import com.volvo.assessment.piotrkuchnowski.exception.DisabledApiKeyException;
 import com.volvo.assessment.piotrkuchnowski.exception.LocationNotFoundException;
 import com.volvo.assessment.piotrkuchnowski.exception.LocationNotProvidedException;
 import com.volvo.assessment.piotrkuchnowski.response.ApiErrorResponse;
@@ -12,10 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -42,6 +40,22 @@ public class CityWeatherController {
                             )
                     ),
                     @ApiResponse(
+                            description = "Location not provided.",
+                            responseCode = "400",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiErrorResponse.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            description = "API Key not provided.",
+                            responseCode = "401",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiErrorResponse.class)
+                            )
+                    ),
+                    @ApiResponse(
                             description = "City not found.",
                             responseCode = "404",
                             content = @Content(
@@ -49,34 +63,14 @@ public class CityWeatherController {
                                     schema = @Schema(implementation = ApiErrorResponse.class)
                             )
                     )
+
+
             }
     )
-    @GetMapping("/city/{cityName}")
-    public ResponseEntity<?> getCityWeather(@PathVariable String cityName) throws IOException, InterruptedException {
+    @GetMapping("/city")
+    public ResponseEntity<CityForecast> getCityWeather(@RequestParam String cityName) throws IOException, InterruptedException {
         System.out.println("cityName="+cityName);
-        try {
-            CityForecast cityForecast = cityWeatherService.getCityWeather(cityName);
-            return ResponseEntity.ok(cityForecast);
-        }catch(LocationNotFoundException e){
-            return new ResponseEntity<>(
-                    new ApiErrorResponse(
-                            LocalDateTime.now().toString(),
-                            HttpStatus.NOT_FOUND.value(),
-                            HttpStatus.NOT_FOUND.getReasonPhrase(),
-                            e.getMessage(),
-                            "/api/v1/weather/city/"+cityName
-                    ), HttpStatus.NOT_FOUND
-            );
-        }catch(LocationNotProvidedException e){
-            return new ResponseEntity<>(
-                    new ApiErrorResponse(
-                            LocalDateTime.now().toString(),
-                            HttpStatus.BAD_REQUEST.value(),
-                            HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                            e.getMessage(),
-                            "/api/v1/weather/city/"+cityName
-                    ), HttpStatus.BAD_REQUEST
-            );
-        }
+        CityForecast cityForecast = cityWeatherService.getCityWeather(cityName);
+        return new ResponseEntity<CityForecast>(cityForecast, HttpStatus.OK);
     }
 }

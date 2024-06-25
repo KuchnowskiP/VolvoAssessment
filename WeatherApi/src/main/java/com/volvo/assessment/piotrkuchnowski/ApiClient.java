@@ -2,7 +2,9 @@ package com.volvo.assessment.piotrkuchnowski;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.volvo.assessment.piotrkuchnowski.exception.DisabledApiKeyException;
 import com.volvo.assessment.piotrkuchnowski.exception.LocationNotFoundException;
+import com.volvo.assessment.piotrkuchnowski.exception.LocationNotProvidedException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -28,11 +30,16 @@ public class ApiClient {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JsonNode responseJson = objectMapper.readTree(response.body());
         if(responseJson.has("error")){
+            System.out.println(location);
+            System.out.println(responseJson.get("error").get("code").asInt());
             if(responseJson.get("error").get("code").asInt() == 1006){
                 throw new LocationNotFoundException("Location not found");
             }
             if(responseJson.get("error").get("code").asInt() == 1003){
-                throw new LocationNotFoundException("Location not provided");
+                throw new LocationNotProvidedException("Location not provided");
+            }
+            if(responseJson.get("error").get("code").asInt() == 2008) {
+                throw new DisabledApiKeyException("Api key is disabled");
             }
         }
         return objectMapper.readValue(response.body(), ForecastResponse.class);
