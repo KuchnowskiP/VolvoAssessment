@@ -36,6 +36,7 @@ The application exposes only one API endpoint for all cities:
 The endpoint returns the weather forecast for the next three days for a specific city. The cityName parameter is a query parameter that specifies the city for which you want to get the forecast.
 
 Note: The cityName parameter is case-insensitive and removes polish diacritics from the city name.
+
 Note 2: Use english names for cities if possible, because weatherapi.com's API stores cities in English.
 For example, use "Cracow" instead of "Krakow". Especially, that there is a city called "Krakow am See" in Germany and weatehrapi.com's API will autocomplete to the first city containing the provided name.
 
