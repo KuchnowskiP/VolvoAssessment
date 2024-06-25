@@ -171,3 +171,8 @@ To run the tests, use the following command:
 ```bash
     ./gradlew test
 ```
+
+## Code Formatting
+
+The project uses the Google Java Format plugin to enforce a consistent code style.
+

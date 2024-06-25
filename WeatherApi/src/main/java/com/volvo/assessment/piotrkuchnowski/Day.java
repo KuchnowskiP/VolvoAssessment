@@ -2,7 +2,7 @@ package com.volvo.assessment.piotrkuchnowski;
 
 import java.math.BigDecimal;
 
-public record Day (
+public record Day(
         BigDecimal maxtemp_c,
         BigDecimal maxtemp_f,
         BigDecimal mintemp_c,
@@ -22,7 +22,4 @@ public record Day (
         Integer daily_will_it_snow,
         BigDecimal daily_chance_of_snow,
         Condition condition,
-        Integer uv
-) {
-
-}
+        Integer uv) {}

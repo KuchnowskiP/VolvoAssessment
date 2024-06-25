@@ -5,6 +5,7 @@ import com.volvo.assessment.piotrkuchnowski.ForecastDay;
 import com.volvo.assessment.piotrkuchnowski.ForecastResponse;
 import com.volvo.assessment.piotrkuchnowski.response.CityForecast;
 import com.volvo.assessment.piotrkuchnowski.response.CityForecastDay;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +43,7 @@ public class CityWeatherService {
                 forecastDay.day().totalprecip_mm(),
                 forecastDay.day().totalsnow_cm(),
                 forecastDay.day().avghumidity(),
-                forecastDay.day().uv()
-        );
+                forecastDay.day().uv());
     }
 
     public CityForecast getCityWeather(String cityName) throws IOException, InterruptedException {
@@ -53,7 +53,7 @@ public class CityWeatherService {
         List<ForecastDay> forecastDays = response.forecast().forecastday();
         List<CityForecastDay> cityForecastDays = new ArrayList<>();
 
-        for(ForecastDay forecastDay : forecastDays) {
+        for (ForecastDay forecastDay : forecastDays) {
             CityForecastDay cityForecastDay = getCityForecastDay(forecastDay);
             cityForecastDays.add(cityForecastDay);
         }
@@ -61,6 +61,4 @@ public class CityWeatherService {
         String name = response.location().name();
         return new CityForecast(name, cityForecastDays);
     }
-
-
 }

@@ -10,7 +10,4 @@ public record Location(
         BigDecimal lon,
         String tz_id,
         Integer localtime_epoch,
-        String localtime
-) {
-
-}
+        String localtime) {}

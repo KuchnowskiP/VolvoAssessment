@@ -31,7 +31,4 @@ public record Current(
         BigDecimal vis_miles,
         Integer uv,
         BigDecimal gust_mph,
-        BigDecimal gust_kph
-) {
-
-}
+        BigDecimal gust_kph) {}

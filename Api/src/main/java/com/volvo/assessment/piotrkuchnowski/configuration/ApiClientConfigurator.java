@@ -1,6 +1,7 @@
 package com.volvo.assessment.piotrkuchnowski.configuration;
 
 import com.volvo.assessment.piotrkuchnowski.ApiClient;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

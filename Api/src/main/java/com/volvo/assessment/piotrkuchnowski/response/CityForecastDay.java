@@ -11,7 +11,4 @@ public record CityForecastDay(
         BigDecimal totalprecip_mm,
         BigDecimal totalsnow_cm,
         BigDecimal avghumidity,
-        Integer uv
-) {
-
-}
+        Integer uv) {}

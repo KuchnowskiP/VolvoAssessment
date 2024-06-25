@@ -36,7 +36,4 @@ public record Hour(
         BigDecimal vis_miles,
         BigDecimal gust_mph,
         BigDecimal gust_kph,
-        Integer uv
-) {
-
-}
+        Integer uv) {}

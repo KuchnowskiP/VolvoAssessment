@@ -23,26 +23,32 @@ public class ApiClient {
     }
 
     public ForecastResponse getResponse(String location) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseForecastURL + apiKey + "&q=" + location + "&days=3&aqi=no&alerts=no"))
-                .build();
+        HttpRequest request =
+                HttpRequest.newBuilder()
+                        .uri(
+                                URI.create(
+                                        baseForecastURL
+                                                + apiKey
+                                                + "&q="
+                                                + location
+                                                + "&days=3&aqi=no&alerts=no"))
+                        .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         JsonNode responseJson = objectMapper.readTree(response.body());
-        if(responseJson.has("error")){
+        if (responseJson.has("error")) {
             System.out.println(location);
             System.out.println(responseJson.get("error").get("code").asInt());
-            if(responseJson.get("error").get("code").asInt() == 1006){
+            if (responseJson.get("error").get("code").asInt() == 1006) {
                 throw new LocationNotFoundException("Location not found");
             }
-            if(responseJson.get("error").get("code").asInt() == 1003){
+            if (responseJson.get("error").get("code").asInt() == 1003) {
                 throw new LocationNotProvidedException("Location not provided");
             }
-            if(responseJson.get("error").get("code").asInt() == 2008) {
+            if (responseJson.get("error").get("code").asInt() == 2008) {
                 throw new DisabledApiKeyException("Api key is disabled");
             }
         }
         return objectMapper.readValue(response.body(), ForecastResponse.class);
     }
-
 }
