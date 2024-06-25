@@ -35,6 +35,10 @@ The application exposes only one API endpoint for all cities:
 
 The endpoint returns the weather forecast for the next three days for a specific city. The cityName parameter is a query parameter that specifies the city for which you want to get the forecast.
 
+Note: The cityName parameter is case-insensitive and removes polish diacritics from the city name.
+Note 2: Use english names for cities if possible, because weatherapi.com's API stores cities in English.
+For example, use "Cracow" instead of "Krakow". Especially, that there is a city called "Krakow am See" in Germany and weatehrapi.com's API will autocomplete to the first city containing the provided name.
+
 ## Installation
 
 To set up the project locally, follow these steps:
@@ -73,8 +77,6 @@ To get the weather forecast for the next three days for a specific city, you can
     curl -X GET "http://localhost:8080/api/v1/weather/city?cityName={cityName}" -H "accept: application/json"
 ```
 This will return a JSON response with the weather forecast for the specified city and will work on Unix based systems as well as on Windows.
-
-Please replace `{cityName}` with the actual city name in the curl command.
 
 ### Example API Response if call is successful
 ```json
