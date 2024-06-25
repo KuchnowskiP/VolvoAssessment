@@ -76,7 +76,7 @@ This will return a JSON response with the weather forecast for the specified cit
 
 Please replace `{cityName}` with the actual city name in the curl command.
 
-### Example Successful API Response
+### Example API Response if call is successful
 ```json
 {
   "name": "Warsaw",
@@ -117,7 +117,8 @@ Please replace `{cityName}` with the actual city name in the curl command.
   ]
 }
 ```
-### Example Error API Response
+In this example, the API call is successful. The response includes the weather forecast for Warsaw for the next three days, including the maximum temperature, minimum temperature, average temperature, maximum wind speed, total precipitation, total snowfall, average humidity, and UV index.
+### Example API Response with error
 ```json
 {
   "timestamp": "2024-06-26T00:00:01.886645500",
@@ -127,7 +128,7 @@ Please replace `{cityName}` with the actual city name in the curl command.
   "path": "/api/v1/weather/city/"
 }
 ```
-
+In this example, the API call returns an error because the specified city is not found in the weather forecast data. 
 ## Presentation
 The weather forecast data for the five largest cities in Poland is stored in the following files:
 - city_forecasts/warsaw.json
